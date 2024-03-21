@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nombre', 100);
             $table->foreignId('tutor')->constrained('users');
             $table->foreignId('centro_id')->constrained();
+            $table->foreignId('categoria_id')->constrained();
             $table->timestamps();
         });
     }
