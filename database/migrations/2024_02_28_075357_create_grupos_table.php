@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('grupos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre', 100);
+            $table->string('abreviatura', 20);
+            $table->string('password', 20);
             $table->foreignId('tutor')->constrained('users');
             $table->foreignId('centro_id')->constrained();
             $table->foreignId('categoria_id')->constrained();

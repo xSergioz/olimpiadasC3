@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('centros', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('codcen')->unique();
-            $table->string('dencen', 100);
+            $table->string('dencen', 255);
             $table->char('titularidad',1);
             $table->string('domcen');
             $table->integer('cpcen');

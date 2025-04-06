@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('curso_escolar', 10);
             $table->smallInteger('num_olimpiada');
             $table->smallInteger('num_modding');
+            $table->smallInteger('num_videojuegos');
             $table->date('fecha_celebracion');
             $table->date('fecha_apertura');
             $table->date('fecha_cierre');
