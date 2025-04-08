@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\PatrocinadorController;
+use App\Http\Controllers\Admin\CategoriaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,7 @@ Route::prefix('/dashboard')->middleware(['auth', 'verified'])->group(function ()
     })->name('dashboard');
     Route::resource('patrocinadores', PatrocinadorController::class)
         ->parameters(['patrocinadores' => 'patrocinador']);
+    Route::resource('categorias', CategoriaController::class)->parameters(['categorias' => 'categoria']);;
 });
 
 Route::middleware('auth')->group(function () {
