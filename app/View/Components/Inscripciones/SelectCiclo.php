@@ -27,6 +27,7 @@ class SelectCiclo extends Component
             ->get();
         return view('components.inscripciones.select-ciclo', [
             'ciclos' => $ciclos,
+            'oldValue' => old('ciclo'),
         ]);
     }
 }

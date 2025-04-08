@@ -65,7 +65,7 @@
                             <div class="container">
                                 <h3>Patrocinadores</h3>
 
-                                <p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum integer. Integer eu ante ornare amet commetus.</p>
+                                <p>El CIFP Carlos III y todos los participantes en la Olimpiada Informática agradecen la colaboración de</p>
                                 <div class="features">
                                     <article>
                                         <a href="#" class="image"><img src="{{ asset('/readonly/images/pic01.jpg') }}" alt="" /></a>
