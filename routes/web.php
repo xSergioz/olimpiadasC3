@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CentroController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\PatrocinadorController;
@@ -28,6 +29,16 @@ Route::prefix('/dashboard')->middleware(['auth', 'verified'])->group(function ()
         ->parameters(['patrocinadores' => 'patrocinador']);
     Route::resource('categorias', CategoriaController::class)->parameters(['categorias' => 'categoria']);;
 });
+
+Route::prefix('/dashboard')->middleware(['auth', 'verified'])->group(function () {
+    Route::get('/', function () {
+        return view('dashboard');
+    })->name('dashboard');
+    Route::resource('centros', CentroController::class)
+        ->parameters(['centros' => 'centro']);
+});
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
