@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\PatrocinadorController;
 use App\Http\Controllers\Admin\CategoriaController;
+use App\Http\Controllers\InscripcionesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,9 @@ use App\Http\Controllers\Admin\CategoriaController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
+
+Route::post('/inscripcion', [InscripcionesController::class, 'store'])->name('inscripcion');
 
 Route::prefix('/dashboard')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/', function () {
