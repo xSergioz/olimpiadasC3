@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\PatrocinadorController;
+use App\Http\Controllers\Admin\CicloController;
+use App\Http\Controllers\Admin\PruebaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +27,10 @@ Route::prefix('/dashboard')->middleware(['auth', 'verified'])->group(function ()
     })->name('dashboard');
     Route::resource('patrocinadores', PatrocinadorController::class)
         ->parameters(['patrocinadores' => 'patrocinador']);
+    Route::resource('ciclos', CicloController::class)
+        ->parameters(['ciclos' => 'ciclo']);
+        Route::resource('pruebas', PruebaController::class)
+        ->parameters(['pruebas' => 'prueba']);
 });
 
 Route::middleware('auth')->group(function () {
