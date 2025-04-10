@@ -1,12 +1,12 @@
 <?php
 
-use App\Http\Controllers\Admin\CentroController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\PatrocinadorController;
 use App\Http\Controllers\Admin\CategoriaController;
+use App\Http\Controllers\Admin\CentroController;
 use App\Http\Controllers\Admin\GradoController;
 use App\Http\Controllers\InscripcionesController;
+use App\Http\Controllers\Admin\PatrocinadorController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,27 +29,12 @@ Route::prefix('/dashboard')->middleware(['auth', 'verified'])->group(function ()
     Route::get('/', function () {
         return view('dashboard');
     })->name('dashboard');
+    Route::resource('categorias', CategoriaController::class);
+    Route::resource('centros', CentroController::class);
+    Route::resource('grados', GradoController::class);
     Route::resource('patrocinadores', PatrocinadorController::class)
         ->parameters(['patrocinadores' => 'patrocinador']);
-    Route::resource('categorias', CategoriaController::class)->parameters(['categorias' => 'categoria']);;
 });
-
-Route::prefix('/dashboard')->middleware(['auth', 'verified'])->group(function () {
-    Route::get('/', function () {
-        return view('dashboard');
-    })->name('dashboard');
-    Route::resource('centros', CentroController::class)
-        ->parameters(['centros' => 'centro']);
-});
-
-Route::prefix('/dashboard')->middleware(['auth', 'verified'])->group(function () {
-    Route::get('/', function () {
-        return view('dashboard');
-    })->name('dashboard');
-    Route::resource('grados', GradoController::class)
-        ->parameters(['grados' => 'grado']);
-});
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
