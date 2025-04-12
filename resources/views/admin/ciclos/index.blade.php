@@ -26,7 +26,11 @@
                                     <td class="border px-4 py-2">{{ $ciclo->id }}</td>
                                     <td class="border px-4 py-2">{{ $ciclo->codigo }}</td>
                                     <td class="border px-4 py-2">{{ $ciclo->nombre }}</td>
-                                    <td class="border px-4 py-2">{{ $ciclo->grado_id }}</td>
+                                    @foreach ($grados as $grado)
+                                        @if ($grado->id == $ciclo->grado_id)
+                                            <td class="border px-4 py-2">{{ $grado->nombre }}</td>
+                                        @endif
+                                    @endforeach
                                     <td class="border px-4 py-2">
                                         <a href="{{ route('ciclos.edit', $ciclo) }}" class="btn btn-sm btn-warning">Editar</a>
                                         <form action="{{ route('ciclos.destroy', $ciclo) }}" method="POST" class="inline">

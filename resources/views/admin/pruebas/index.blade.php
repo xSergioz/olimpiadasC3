@@ -15,18 +15,18 @@
                         <thead>
                             <tr>
                                 <th class="px-4 py-2">ID</th>
-                                <th class="px-4 py-2">Código</th>
                                 <th class="px-4 py-2">Nombre</th>
-                                <th class="px-4 py-2">Grado id</th>
+                                <th class="px-4 py-2">Categorias ediciones id</th>
+                                <th class="px-4 py-2">Patrocinadores id</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($pruebas as $prueba)
                                 <tr>
                                     <td class="border px-4 py-2">{{ $prueba->id }}</td>
-                                    <td class="border px-4 py-2">{{ $prueba->codigo }}</td>
                                     <td class="border px-4 py-2">{{ $prueba->nombre }}</td>
-                                    <td class="border px-4 py-2">{{ $prueba->grado_id }}</td>
+                                    <td class="border px-4 py-2">{{ $prueba->categorias_ediciones_id }}</td>
+                                    <td class="border px-4 py-2">{{ $prueba->patrocinadores_id }}</td>
                                     <td class="border px-4 py-2">
                                         <a href="{{ route('pruebas.edit', $prueba) }}" class="btn btn-sm btn-warning">Editar</a>
                                         <form action="{{ route('pruebas.destroy', $prueba) }}" method="POST" class="inline">

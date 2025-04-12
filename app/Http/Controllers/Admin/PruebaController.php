@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Prueba;
+use App\Models\Patrocinador;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -15,26 +16,28 @@ class PruebaController extends Controller
     public function index()
     {
         $pruebas = Prueba::all();
-        return view('admin.pruebas.index', compact('pruebas'));
+        $patrocinadores = Patrocinador::all();
+        return view('admin.pruebas.index', compact('pruebas', 'patrocinadores'));
     }
 
     public function create()
     {
-        return view('admin.pruebas.create');
+        $patrocinadores = Patrocinador::all();
+        return view('admin.pruebas.create', compact('patrocinadores'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'codigo' => 'required|max:10',
             'nombre' => 'required|max:100',
-            'grado_id' => 'required|exists:grados,id',
+            'categorias_ediciones_id' => 'required|exists:categorias_ediciones,id',
+            'patrocinadores_id' => 'required|exists:patrocinadores,id',
         ]);
 
         Prueba::create([
-            'codigo' => $request->codigo,
             'nombre' => $request->nombre,
-            'grado_id' => $request->grado_id,
+            'categorias_ediciones_id' => $request->categorias_ediciones_id,
+            'patrocinadores_id' => $request->patrocinadores_id,
         ]);
 
         return redirect()->route('pruebas.index')->with('success', 'Prueba creado correctamente.');
@@ -42,20 +45,21 @@ class PruebaController extends Controller
 
     public function edit(Prueba $prueba)
     {
-        return view('admin.pruebas.edit', compact('prueba'));
+        $patrocinadores = Patrocinador::all();
+        return view('admin.pruebas.edit', compact('prueba', 'patrocinadores'));
     }
 
     public function update(Request $request, Prueba $prueba)
     {
         $request->validate([
-            'codigo' => 'required|max:10',
             'nombre' => 'required|max:100',
-            'grado_id' => 'required|exists:grados,id',
+            'categorias_ediciones_id' => 'required|exists:categorias_ediciones,id',
+            'patrocinadores_id' => 'required|exists:patrocinadores,id',
         ]);
 
-        $prueba->codigo = $request->codigo;
         $prueba->nombre = $request->nombre;
-        $prueba->grado_id = $request->grado_id;
+        $prueba->categorias_ediciones_id = $request->categorias_ediciones_id;
+        $prueba->patrocinadores_id = $request->patrocinadores_id;
         $prueba->save();
 
         return redirect()->route('pruebas.index')->with('success', 'Prueba actualizado correctamente.');

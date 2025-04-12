@@ -11,8 +11,8 @@ class Prueba extends Model
 
     protected $fillable = [
         'id',
-        'codigo',
         'nombre',
-        'grado_id',
+        'categorias_ediciones_id',
+        'patrocinadores_id'
     ];
 }

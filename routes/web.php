@@ -29,7 +29,7 @@ Route::prefix('/dashboard')->middleware(['auth', 'verified'])->group(function ()
         ->parameters(['patrocinadores' => 'patrocinador']);
     Route::resource('ciclos', CicloController::class)
         ->parameters(['ciclos' => 'ciclo']);
-        Route::resource('pruebas', PruebaController::class)
+    Route::resource('pruebas', PruebaController::class)
         ->parameters(['pruebas' => 'prueba']);
 });
 

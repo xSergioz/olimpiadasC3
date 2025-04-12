@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Ciclo;
+use App\Models\Grado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -15,12 +16,14 @@ class CicloController extends Controller
     public function index()
     {
         $ciclos = Ciclo::all();
-        return view('admin.ciclos.index', compact('ciclos'));
+        $grados = Grado::all();
+        return view('admin.ciclos.index', compact('ciclos', 'grados'));
     }
 
     public function create()
     {
-        return view('admin.ciclos.create');
+        $grados = Grado::all();
+        return view('admin.ciclos.create', compact('grados'));
     }
 
     public function store(Request $request)
@@ -42,7 +45,8 @@ class CicloController extends Controller
 
     public function edit(Ciclo $ciclo)
     {
-        return view('admin.ciclos.edit', compact('ciclo'));
+        $grados = Grado::all();
+        return view('admin.ciclos.edit', compact('ciclo', 'grados'));
     }
 
     public function update(Request $request, Ciclo $ciclo)

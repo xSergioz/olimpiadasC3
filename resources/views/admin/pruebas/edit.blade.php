@@ -14,16 +14,24 @@
                         @csrf
                         @method('PUT')
                         <div class="mb-4">
-                            <label for="codigo" class="block text-gray-700">Código</label>
-                            <input type="text" name="codigo" id="codigo" value="{{ old('codigo') ?? $prueba->codigo }}" class="w-full border-gray-300 rounded-md">
-                        </div>
-                        <div class="mb-4">
                             <label for="nombre" class="block text-gray-700">Nombre</label>
-                            <input type="text" name="nombre" id="nombre" value="{{ old('nombre') ?? $prueba->nombre }}" class="w-full border-gray-300 rounded-md">
+                            <input type="text" name="nombre" id="nombre" value="{{ old('nombre') }}" class="w-full border-gray-300 rounded-md">
                         </div>
                         <div class="mb-4">
-                            <label for="grado_id" class="block text-gray-700">Grado id</label>
-                            <input type="text" name="grado_id" id="grado_id" value="{{ old('grado_id') ?? $prueba->grado_id }}" class="w-full border-gray-300 rounded-md">
+                            <label for="categorias_ediciones_id" class="block text-gray-700">Categorias ediciones id</label>
+                            <input type="text" name="categorias_ediciones_id" id="categorias_ediciones_id" value="{{ old('categorias_ediciones_id') }}" class="w-full border-gray-300 rounded-md">
+                        </div>
+                        <div class="mb-4">
+                            <label for="patrocinadores_id" class="block text-gray-700">Patrocinadores</label>
+                            <select name="patrocinadores_id" id="patrocinadores_id" class="w-full border-gray-300 rounded-md">
+                                @foreach ($patrocinadores as $patrocinador)
+                                    <option value="{{ $patrocinador->id }}">
+                                        {{ $patrocinador->nombre }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            <!-- <input type="text" name="patrocinadores_id" id="patrocinadores_id" value="{{ old('patrocinadores_id') }}" class="w-full border-gray-300 rounded-md">
+                            -->
                         </div>
                         <input type="submit" class="primary" value="Guardar"/>
                     </form>
