@@ -17,8 +17,18 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('ciclos.index')" :active="request()->routeIs('ciclos.index')">
+                        {{ __('Ciclos') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('patrocinadores.index')" :active="request()->routeIs('patrocinadores.index')">
                         {{ __('Patrocinadores') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('pruebas.index')" :active="request()->routeIs('pruebas.index')">
+                        {{ __('Pruebas') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
@@ -29,6 +39,21 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('centros.index')" :active="request()->routeIs('centros.index')">
                         {{ __('Centros') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('grados.index')" :active="request()->routeIs('grados.index')">
+                        {{ __('Grados') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('grupos.index')" :active="request()->routeIs('grupos.index')">
+                        {{ __('Grupos') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('participantes.index')" :active="request()->routeIs('participantes.index')">
+                        {{ __('Participantes (No implementado)') }}
                     </x-nav-link>
                 </div>
             </div>
