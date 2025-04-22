@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\PatrocinadorController;
 use App\Http\Controllers\Admin\PruebaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\ParticipanteController;
+use App\Http\Controllers\Admin\EdicionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,8 @@ Route::prefix('/dashboard')->middleware(['auth', 'verified'])->group(function ()
     Route::resource('categorias', CategoriaController::class);
     Route::resource('centros', CentroController::class);
     Route::resource('ciclos', CicloController::class);
+    Route::resource('ediciones', EdicionController::class)
+        ->parameters(['ediciones' => 'edicion']);
     Route::resource('grados', GradoController::class);
     Route::resource('grupos', GrupoController::class);
     Route::resource('patrocinadores', PatrocinadorController::class)
