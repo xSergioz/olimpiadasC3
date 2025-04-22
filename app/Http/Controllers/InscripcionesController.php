@@ -101,6 +101,6 @@ class InscripcionesController extends Controller
             // Manejar el error de envío de correo
             $mensajeCorreo = "Error al enviar el correo de confirmación.<br />Por favor. Póngase en contacto con la organización.";
         }
-        return redirect()->route('home')->with('success', 'Inscripción realizada correctamente.<br />' . $mensajeCorreo);
+        return redirect()->to(route('home') . '#inscripciones')->with('success', 'Inscripción realizada correctamente.<br />' . $mensajeCorreo);
     }
 }
