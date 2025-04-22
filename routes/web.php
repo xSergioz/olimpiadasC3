@@ -3,10 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoriaController;
 use App\Http\Controllers\Admin\CentroController;
+use App\Http\Controllers\Admin\CicloController;
 use App\Http\Controllers\Admin\GradoController;
 use App\Http\Controllers\Admin\GrupoController;
 use App\Http\Controllers\InscripcionesController;
 use App\Http\Controllers\Admin\PatrocinadorController;
+use App\Http\Controllers\Admin\PruebaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\ParticipanteController;
 use App\Http\Controllers\Admin\EdicionController;
@@ -34,12 +36,14 @@ Route::prefix('/dashboard')->middleware(['auth', 'verified'])->group(function ()
     })->name('dashboard');
     Route::resource('categorias', CategoriaController::class);
     Route::resource('centros', CentroController::class);
+    Route::resource('ciclos', CicloController::class);
+    Route::resource('ediciones', EdicionController::class)
+        ->parameters(['ediciones' => 'edicion']);
     Route::resource('grados', GradoController::class);
     Route::resource('grupos', GrupoController::class);
     Route::resource('patrocinadores', PatrocinadorController::class)
         ->parameters(['patrocinadores' => 'patrocinador']);
-    Route::resource('ediciones', EdicionController::class)
-        ->parameters(['ediciones' => 'edicion']);
+    Route::resource('pruebas', PruebaController::class);
     Route::resource('participantes', ParticipanteController::class);
 });
 

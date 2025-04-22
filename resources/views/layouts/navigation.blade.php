@@ -17,8 +17,18 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('ciclos.index')" :active="request()->routeIs('ciclos.index')">
+                        {{ __('Ciclos') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('patrocinadores.index')" :active="request()->routeIs('patrocinadores.index')">
                         {{ __('Patrocinadores') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('pruebas.index')" :active="request()->routeIs('pruebas.index')">
+                        {{ __('Pruebas') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">

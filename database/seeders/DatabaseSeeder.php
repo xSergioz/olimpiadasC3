@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Prueba;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
@@ -22,6 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CategoriasTableSeeder::class);
         $this->call(UsersTableSeeder::class);
         $this->call(EdicionesSeeder::class);
+        // $this->call(PruebasTableSeeder::class);
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
