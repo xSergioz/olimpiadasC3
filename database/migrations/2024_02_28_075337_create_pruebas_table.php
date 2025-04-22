@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre', 50);
             $table->foreignId('categorias_ediciones_id')->constrained('categorias_ediciones');
-            $table->foreignId('patrocinadores_id')->constrained('patrocinadores');
+            $table->foreign('patrocinadores_id')->references('id')->on('patrocinadores')->onDelete();
             $table->timestamps();
         });
     }
