@@ -11,7 +11,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     @include('partials.alerts')
-                    <form action="{{ route('ciclos.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('ciclos.store') }}" method="POST">
                         @csrf
                         <div class="mb-4">
                             <label for="codigo" class="block text-gray-700">Código</label>
