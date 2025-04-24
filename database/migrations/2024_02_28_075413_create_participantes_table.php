@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('participantes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('grupo_id')->constrained();
+            $table->foreignId('grupo_id')->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->string('nombre')->nullable();
             $table->string('apellidos')->nullable();
             $table->timestamps();
