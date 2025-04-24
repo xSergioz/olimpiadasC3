@@ -11,18 +11,19 @@
         @include('emails.header')
 
         <!-- Contenido -->
-        <p>Estimado tutor,</p>
+        <p>Estimado {{ $inscripcion['prof_resp'] }},</p>
         <p>Se ha confirmado la inscripción del grupo con la siguiente información:</p>
         <ul>
             <li><strong>Nombre del grupo:</strong> {{ $inscripcion['grupo'] }}</li>
-            <li><strong>Tutor:</strong> {{ $inscripcion['prof_resp'] }}</li>
             <li><strong>Centro:</strong> {{ App\Models\Centro::find($inscripcion['centro'])->dencen }}</li>
             <li><strong>Ciclo:</strong> {{ App\Models\Ciclo::find($inscripcion['ciclo'])->nombre }}</li>
             <li><strong>Categoría:</strong> {{ App\Models\Categoria::find($inscripcion['categoria'])->nombre }}</li>
             <li>Integrantes del grupo:
                 <ul>
                     @foreach ($inscripcion['nombre'] as $key => $nombre)
-                    <li>{{ $nombre }} {{ $inscripcion['apellido'][$key] }}</li>
+                        @if (!empty($nombre))
+                            <li>{{ $nombre }} {{ $inscripcion['apellido'][$key] }}</li>
+                        @endif
                     @endforeach
                 </ul>
             </li>

@@ -18,7 +18,7 @@ class InscripcionesController extends Controller
             'email_prof_resp' => 'required|email|max:255',
             'ciclo' => 'required|numeric',
             'categoria' => 'required|numeric',
-            'grupo' => 'required|string|max:255',
+            'grupo' => 'required|string|max:255|unique:grupos,nombre',
             'nombre.*' => 'nullable|string|max:255',
             'apellido.*' => 'nullable|string|max:255',
         ]);
@@ -96,7 +96,7 @@ class InscripcionesController extends Controller
         // Enviar correo de confirmación al tutor
         $mensajeCorreo = "Recibirá un correo electrónico con la confirmación de la inscripción.";
         try {
-            \Mail::to($user->email)->send(new \App\Mail\InscripcionConfirmada($request->all(), $grupo, $user->password));
+            \Mail::to($user->email)->send(new \App\Mail\InscripcionConfirmada($request->all()));
         } catch (\Exception $e) {
             // Manejar el error de envío de correo
             $mensajeCorreo = "Error al enviar el correo de confirmación.<br />Por favor. Póngase en contacto con la organización.";
