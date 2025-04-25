@@ -25,7 +25,7 @@
 
                     <!-- Two -->
                         <section id="categorias">
-                            @include('partials.frontend.categorias')
+                            <x-frontend.categorias />
                         </section>
 
                     <!-- Three -->
