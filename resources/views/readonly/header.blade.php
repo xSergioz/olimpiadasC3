@@ -3,7 +3,7 @@
             <header>
                 <span class="image avatar"><img src="{{ asset('/images/logoC3.png') }}" alt="" /></span>
                 <h1 id="logo"><a href="#">Olimpiadas Informáticas Región de Murcia</a></h1>
-                <p>Organiza: CIFP Carlos III</p>
+                <!-- <p>Organiza: CIFP Carlos III</p> -->
             </header>
             <nav id="nav">
                 <ul>

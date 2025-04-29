@@ -2756,12 +2756,12 @@ input, select, textarea {
 			-webkit-flex-shrink: 0;
 			-ms-flex-shrink: 0;
 			flex-shrink: 0;
-			padding: 3em;
+			padding: 1.5em;
 		}
 
 			#header > header .avatar {
 				display: block;
-				margin: 0 auto 2.25em auto;
+				margin: 0 auto 1em auto;
 				width: 8em;
 			}
 
@@ -2773,7 +2773,7 @@ input, select, textarea {
 			#header > header p {
 				color: #f8e9a3;
 				font-style: italic;
-				margin: 1em 0 0 0;
+				margin: 0.5em 0 0 0;
 			}
 
 		#header > footer {
@@ -2783,7 +2783,7 @@ input, select, textarea {
 			flex-shrink: 0;
 			bottom: 0;
 			left: 0;
-			padding: 2em;
+			padding: 1em;
 			width: 100%;
 		}
 
@@ -2809,7 +2809,7 @@ input, select, textarea {
 			}
 
 				#header > nav ul li {
-					border-top: solid 2px #ff9001;
+					border-top: solid 2px #f8e9a3;
 					display: block;
 					padding: 0;
 				}
@@ -2822,7 +2822,7 @@ input, select, textarea {
 						border: 0;
 						color: #ffffff !important;
 						display: block;
-						padding: 0.85em 0;
+						padding: 0.5em 0;
 						text-decoration: none;
 					}
 
