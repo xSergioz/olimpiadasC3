@@ -3,7 +3,7 @@
     <p>Los estudiantes de los cilos formativos de la
          Familia Profesional de Informática y Comunicaciones,
          pueden inscribirse en las siguientes categorías:</p>
-    <div class="features">
+    <div>
         @foreach ($categorias as $categoria)
             <article>
                 <div class="inner">
