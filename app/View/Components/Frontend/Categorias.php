@@ -21,7 +21,8 @@ class Categorias extends Component
      */
     public function render(): View|Closure|string
     {
-        $categorias = \App\Models\Categoria::all();
+        $edicion = \App\Models\Edicion::getEdicionActual();
+        $categorias = $edicion->categorias;
         return view('components.frontend.categorias', [
             'categorias' => $categorias,
         ]);

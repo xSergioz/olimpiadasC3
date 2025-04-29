@@ -8,7 +8,7 @@
             <article>
                 <div class="inner">
                     <h4>
-                        {{ $categoria->nombre }}
+                        {{ $categoria->romano_convocatoria }} {{ $categoria->nombre }}
                         @auth
                             @if (Auth::user()->isAdmin())
                                 <a href="{{ route('categorias.edit', $categoria->id) }}" class="btn btn-primary btn-sm">
