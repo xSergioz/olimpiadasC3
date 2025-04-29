@@ -87,6 +87,21 @@ class EdicionController extends Controller
             'css_file' => $request->hasFile('css_file') ? $css_path : $edicion->css_file,
         ]);
 
+        // Actualizar las categorías asociadas a la edición
+        $categorias = $request->input('categorias', []);
+        $syncData = [];
+
+        foreach ($categorias as $categoriaId => $data) {
+            if (isset($data['seleccionada'])) {
+                $syncData[$categoriaId] = [
+                    'num_convocatoria' => $data['num_convocatoria'] ?? null,
+                ];
+            }
+        }
+
+        // Sincronizar las categorías con la tabla pivot
+        $edicion->categorias()->sync($syncData);
+
         return redirect()->route('ediciones.index')->with('success', 'Edición actualizada con éxito.');
     }
 

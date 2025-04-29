@@ -14,4 +14,10 @@ class Categoria extends Model
         'nombre',
         'descripcion',
     ];
+
+    public function ediciones()
+    {
+        return $this->belongsToMany(Edicion::class, 'categorias_ediciones')
+                    ->withPivot('num_convocatoria');
+    }
 }
