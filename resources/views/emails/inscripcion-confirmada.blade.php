@@ -28,15 +28,9 @@
                 </ul>
             </li>
         </ul>
-        <p>Si desea realizar alguna modificación en la inscripción, puede acceder a
-            <a href="https://olimpiadas.cifpcarlos3.es/dashboard">Olimpiadas Informáticas</a>,
-            con su cuenta de correo electrónico y la contraseña
-            @if (@isset($password))
-                <strong>{{ $password }}</strong>
-            @else
-                que recibió en el primer correo de inscripción.
-            @endif
-            </p>
+        <p>Si desea realizar alguna modificación en la inscripción, puede generar una contraseña
+            <a href="{{ env('APP_URL') }}/forgot-password">Olvido de contraseña</a>,
+            con la cuenta de correo electrónico utilizada para la inscripción.</p>
         <p>Gracias por participar en las Olimpiadas Informáticas.</p>
 
         <!-- Pie de página -->
