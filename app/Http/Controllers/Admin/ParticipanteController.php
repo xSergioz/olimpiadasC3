@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
+use App\Models\Grupo;
 use App\Models\Participante;
 use Illuminate\Http\Request;
 
@@ -10,10 +11,11 @@ class ParticipanteController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Grupo $grupo)
     {
-        $participantes = Participante::all();
-        return view('admin.participantes.index', ['participantes' => $participantes]);
+        $this->authorize('view', $grupo);
+        $participantes = $grupo->participantes()->with('grupo')->get();
+        return view('admin.participantes.index', compact('participantes', 'grupo'));
     }
 
     /**
@@ -21,6 +23,7 @@ class ParticipanteController extends Controller
      */
     public function show(Participante $participante)
     {
+        $this->authorize('view', $participante->grupo);
         return view('admin.participantes.show', compact('participante'));
     }
 
@@ -28,25 +31,29 @@ class ParticipanteController extends Controller
      * Show the form for creating a new resource.
      */
 
-    public function create()
+    public function create(Grupo $grupo)
     {
-        return view('admin.participantes.create');
+        $this->authorize('update', $grupo);
+        return view('admin.participantes.create', compact('grupo'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Grupo $grupo)
     {
+        $this->authorize('update', $grupo);
         $request->validate([
             'nombre' => 'required|max:100',
         ]);
 
-        Participante::create([
+        $grupo->participantes()->create([
             'nombre' => $request->nombre,
+            'apellidos' => $request->apellidos,
+
         ]);
 
-        return redirect()->route('participantes.index')->with('success', 'Participante creado correctamente.');
+        return redirect()->route('grupos.participantes.index', ['grupo' => $grupo])->with('success', 'Participante creado correctamente.');
     }
 
     /**
@@ -55,7 +62,9 @@ class ParticipanteController extends Controller
 
     public function edit(Participante $participante)
     {
-        return view('admin.participantes.edit', compact('participante'));
+        $grupo = $participante->grupo;
+        $this->authorize('update', $grupo);
+        return view('admin.participantes.edit', compact('participante', 'grupo'));
     }
     /**
      * Update the specified resource in storage.
@@ -66,10 +75,13 @@ class ParticipanteController extends Controller
             'nombre' => 'required|max:100',
         ]);
 
+        $grupo = $participante->grupo;
+        $this->authorize('update', $grupo);
         $participante->nombre = $request->nombre;
+        $participante->apellidos = $request->apellidos;
         $participante->save();
 
-        return redirect()->route('participantes.index')->with('success', 'Participante actualizado correctamente.');
+        return redirect()->route('grupos.participantes.index', ['grupo' => $grupo])->with('success', 'Participante actualizado correctamente.');
     }
 
     /**
@@ -78,8 +90,10 @@ class ParticipanteController extends Controller
 
     public function destroy(Participante $participante)
     {
+        $grupo = $participante->grupo;
+        $this->authorize('update', $grupo);
         $participante->delete();
-        return redirect()->route('participantes.index')->with('success', 'Participante eliminado correctamente.');
+        return redirect()->route('grupos.participantes.index', ['grupo' => $grupo])->with('success', 'Participante eliminado correctamente.');
     }
 
 }
