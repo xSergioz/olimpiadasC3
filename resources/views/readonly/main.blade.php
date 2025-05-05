@@ -5,7 +5,7 @@
                     <!-- One -->
                         <section id="objetivos">
                             <div class="image main" data-position="center">
-                                <img src="{{ asset('/ediciones/edicion2025/banner.png') }}" alt="" />
+                                <img src="{{ asset('storage/ediciones/edicion' . \App\Models\Edicion::getEdicionActual()->id . '/banner.png') }}" alt="" />
                             </div>
                             <div class="container">
                                 <h3>Objetivos</h3>

@@ -12,7 +12,7 @@
         <meta name="description" content="Olimpiadas Informáticas Región de Murcia" />
         <meta name="author" content="CIFP Carlos III" />
         <meta lang="es" />
-		<link rel="stylesheet" href="{{ asset('/ediciones/edicion2025/main.css') }}" />
+		<link rel="stylesheet" href="{{ asset('storage/ediciones/edicion' . \App\Models\Edicion::getEdicionActual()->id . '/main.css') }}" />
 
         <!-- Carrusel patrocinadores CSS -->
         <link rel="stylesheet" type="text/css" href="{{ asset('/slick/slick.css') }}"/>

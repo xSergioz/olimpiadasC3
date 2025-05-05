@@ -31,7 +31,9 @@
                                     <td class="border px-4 py-2">{{ $edicion->fecha_apertura }}</td>
                                     <td class="border px-4 py-2">{{ $edicion->fecha_cierre }}</td>
                                     <td class="border px-4 py-2">
-                                        <a href="{{ asset('storage/' . $edicion->css_file) }}" target="_blank" class="text-blue-500 underline">Ver archivo CSS</a>
+                                        @if ($edicion->css_file)
+                                            <a href="{{ asset('storage/' . $edicion->css_file) }}" target="_blank" class="text-blue-500 underline">Ver archivo CSS</a>
+                                        @endif
                                     </td>
 
                                     <td class="border px-4 py-2">
